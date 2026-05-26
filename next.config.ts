@@ -18,6 +18,7 @@ const baseConfig: NextConfig = {
   outputFileTracingIncludes: {
     '/': ['./migrations/**/*'],
   },
+  transpilePackages: ['@clerk/nextjs', '@arcjet/next'],
 };
 
 // Initialize the Next-Intl plugin
