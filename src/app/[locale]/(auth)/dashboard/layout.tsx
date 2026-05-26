@@ -20,7 +20,6 @@ export default async function DashboardLayout(props: DashboardLayoutProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
   const headersList = await headers();
-  const currentPath = headersList.get('x-invoke-path') ?? '/dashboard';
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
