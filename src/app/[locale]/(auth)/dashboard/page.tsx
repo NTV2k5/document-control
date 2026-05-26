@@ -13,7 +13,7 @@ import {
   FileArchive,
   UploadCloud,
 } from 'lucide-react';
-import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Rectangle } from 'recharts';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -221,7 +221,7 @@ export default function DashboardOverview() {
                     dataKey="views"
                     fill="#cbd5e1"
                     radius={[4, 4, 0, 0]}
-                    activeBar={<rect fill="#3b82f6" />}
+                    activeBar={<Rectangle fill="#3b82f6" />}
                   />
                 </BarChart>
               </ResponsiveContainer>

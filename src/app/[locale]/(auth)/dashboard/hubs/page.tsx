@@ -143,27 +143,25 @@ export default function UniversityHubs() {
                   {dept.size} • {dept.files} files
                 </p>
 
-                {/* Simulated Hover Context Menu on the first item */}
-                {i === 3 && (
-                  <div className="absolute top-12 right-0 z-10 w-48 rounded-xl border bg-white py-1 text-sm shadow-lg">
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">✏️</span> Rename Dept
-                    </button>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">📥</span> Download All
-                    </button>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">📁</span> Move Directory
-                    </button>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">🔗</span> Share Access
-                    </button>
-                    <div className="my-1 h-px bg-border"></div>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-red-600 hover:bg-muted">
-                      <span className="text-xs">🗑️</span> Archive Dept
-                    </button>
-                  </div>
-                )}
+                {/* Hover Context Menu */}
+                <div className="absolute top-12 right-0 z-10 w-48 rounded-xl border bg-white py-1 text-sm shadow-lg opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 group-hover:pointer-events-auto">
+                  <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
+                    <span className="text-xs">✏️</span> Rename Dept
+                  </button>
+                  <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
+                    <span className="text-xs">📥</span> Download All
+                  </button>
+                  <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
+                    <span className="text-xs">📁</span> Move Directory
+                  </button>
+                  <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
+                    <span className="text-xs">🔗</span> Share Access
+                  </button>
+                  <div className="my-1 h-px bg-border"></div>
+                  <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-red-600 hover:bg-muted">
+                    <span className="text-xs">🗑️</span> Archive Dept
+                  </button>
+                </div>
               </CardContent>
             </Card>
           ))}

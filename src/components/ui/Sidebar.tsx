@@ -69,8 +69,18 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
             label="University Hubs"
             active={currentPath.includes('/hubs')}
           />
-          <SidebarItem href="#" icon={Folders} label="My Hubs" />
-          <SidebarItem href="#" icon={Ticket} label="Tickets" />
+          <SidebarItem
+            href="/dashboard/my-hubs"
+            icon={Folders}
+            label="My Hubs"
+            active={currentPath.includes('/my-hubs')}
+          />
+          <SidebarItem
+            href="/dashboard/tickets"
+            icon={Ticket}
+            label="Tickets"
+            active={currentPath.includes('/tickets')}
+          />
         </nav>
 
         <div>
@@ -88,7 +98,7 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
 
       <div className="mt-auto">
         <div className="rounded-xl border bg-muted/50 p-4">
-          <div className="mb-4 flex items-center gap-3">
+          <Link href="/dashboard/user-profile" className="mb-4 flex items-center gap-3 transition-opacity hover:opacity-80">
             <Image
               src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
               alt="User"
@@ -101,7 +111,7 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
               <p className="text-sm font-semibold">Dr. Sarah Jenkins</p>
               <p className="text-xs text-muted-foreground">Dean of Information</p>
             </div>
-          </div>
+          </Link>
 
           <div className="mb-4 rounded-lg bg-indigo-900 p-3 text-white">
             <p className="mb-1 text-xs text-indigo-200">STORAGE USAGE</p>
