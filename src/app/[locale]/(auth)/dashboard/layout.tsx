@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import { headers } from 'next/headers';
 import { Header } from '@/components/ui/Header';
 import { Sidebar } from '@/components/ui/Sidebar';
 
@@ -19,7 +18,6 @@ export function generateMetadata(): Metadata {
 export default async function DashboardLayout(props: DashboardLayoutProps) {
   const { locale } = await props.params;
   setRequestLocale(locale);
-  const headersList = await headers();
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">

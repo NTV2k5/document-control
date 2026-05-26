@@ -322,3 +322,66 @@ export const ticketHistory = [
     type: 'create',
   },
 ];
+
+export const hubSummaryCards = [
+  {
+    id: 1,
+    type: 'Images',
+    icon: 'image',
+    count: 543,
+    size: '2.89 GB',
+    percentage: 20,
+    color: 'red',
+  },
+  {
+    id: 2,
+    type: 'Videos',
+    icon: 'video',
+    count: 2,
+    size: '333.79 MB',
+    percentage: 5,
+    color: 'blue',
+  },
+  {
+    id: 3,
+    type: 'Documents',
+    icon: 'document',
+    count: 1235,
+    size: '8.85 GB',
+    percentage: 60,
+    color: 'green',
+  },
+  {
+    id: 4,
+    type: 'Other',
+    icon: 'archive',
+    count: 226,
+    size: '30.77 GB',
+    percentage: 15,
+    color: 'amber',
+  },
+];
+
+export const recentActivity = [
+  {
+    id: 1,
+    name: 'Thesis_Proposal_Final.pdf',
+    type: 'document',
+    color: 'green',
+    modified: '2 hours ago',
+    directory: 'Computer Science',
+    owners: [
+      { id: 'u1', label: 'C', color: 'orange', text: undefined },
+      { id: 'u2', label: '🌿', color: 'blue', text: undefined },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Lab_Notes_Week_12.docx',
+    type: 'document',
+    color: 'amber',
+    modified: 'Yesterday, 14:30',
+    directory: 'AI Research Lab',
+    owners: [{ id: 'u3', label: 'AT', color: 'blue', text: 'blue' }],
+  },
+];
