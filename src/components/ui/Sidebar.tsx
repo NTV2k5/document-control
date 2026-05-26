@@ -1,3 +1,5 @@
+'use client';
+
 import {
   LayoutDashboard,
   FileText,
@@ -10,7 +12,7 @@ import {
   Settings,
 } from 'lucide-react';
 import Image from 'next/image';
-import { Link } from '@/libs/I18nNavigation';
+import { Link, usePathname } from '@/libs/I18nNavigation';
 import { cn } from '@/utils/cn';
 
 const SidebarItem = ({
@@ -36,7 +38,8 @@ const SidebarItem = ({
   </Link>
 );
 
-export function Sidebar({ currentPath }: { currentPath: string }) {
+export function Sidebar() {
+  const currentPath = usePathname();
   return (
     <div className="flex h-screen w-64 flex-col border-r bg-card px-4 py-6">
       <div className="mb-8 flex items-center gap-2 px-2">
@@ -98,7 +101,10 @@ export function Sidebar({ currentPath }: { currentPath: string }) {
 
       <div className="mt-auto">
         <div className="rounded-xl border bg-muted/50 p-4">
-          <Link href="/dashboard/user-profile" className="mb-4 flex items-center gap-3 transition-opacity hover:opacity-80">
+          <Link
+            href="/dashboard/user-profile"
+            className="mb-4 flex items-center gap-3 transition-opacity hover:opacity-80"
+          >
             <Image
               src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
               alt="User"

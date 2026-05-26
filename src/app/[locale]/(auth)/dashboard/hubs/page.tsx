@@ -144,7 +144,7 @@ export default function UniversityHubs() {
                 </p>
 
                 {/* Hover Context Menu */}
-                <div className="absolute top-12 right-0 z-10 w-48 rounded-xl border bg-white py-1 text-sm shadow-lg opacity-0 pointer-events-none transition-opacity group-hover:opacity-100 group-hover:pointer-events-auto">
+                <div className="pointer-events-none absolute top-12 right-0 z-10 w-48 rounded-xl border bg-white py-1 text-sm opacity-0 shadow-lg transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
                   <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
                     <span className="text-xs">✏️</span> Rename Dept
                   </button>
