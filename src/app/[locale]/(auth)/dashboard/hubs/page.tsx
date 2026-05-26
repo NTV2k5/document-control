@@ -126,7 +126,7 @@ export default function UniversityHubs() {
           {universityDepartments.map((dept, i) => (
             <Card
               key={`dept-${i}`}
-              className="group cursor-pointer transition-colors hover:border-primary"
+              className={`group cursor-pointer transition-colors hover:border-primary ${activeMenu === `dept-${i}` ? 'relative z-50' : ''}`}
             >
               <CardContent className="relative p-5">
                 <div className="mb-4 flex items-start justify-between">
@@ -192,7 +192,7 @@ export default function UniversityHubs() {
           {universityProjects.map((project, i) => (
             <Card
               key={`proj-${i}`}
-              className="group cursor-pointer transition-colors hover:border-primary"
+              className={`group cursor-pointer transition-colors hover:border-primary ${activeMenu === `proj-${i}` ? 'relative z-50' : ''}`}
             >
               <CardContent className="relative p-5">
                 <div className="mb-4 flex items-start justify-between">

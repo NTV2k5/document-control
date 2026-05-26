@@ -2,7 +2,7 @@ import { X, FileText, Edit2, Check } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ticketHistory } from '@/utils/mockData';
+import { ticketHistory, ticketDetailMock } from '@/utils/mockData';
 
 type TicketDetailModalProps = {
   isOpen: boolean;
@@ -29,7 +29,7 @@ export function TicketDetailModal({
         className="fixed inset-0 z-50 w-full cursor-default bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
-      <div className="fixed top-[50%] left-[50%] z-50 flex grid max-h-[90vh] w-full max-w-5xl translate-x-[-50%] translate-y-[-50%] flex-col gap-4 overflow-hidden border bg-background p-6 shadow-lg sm:rounded-2xl">
+      <div className="fixed top-[50%] left-[50%] z-50 flex max-h-[90vh] w-full max-w-5xl translate-x-[-50%] translate-y-[-50%] flex-col gap-4 overflow-hidden border bg-background p-6 shadow-lg sm:rounded-2xl">
         {/* Header */}
         <div className="mb-2 flex shrink-0 items-center justify-between">
           <div className="flex items-center gap-2 text-xl font-bold">
@@ -60,31 +60,29 @@ export function TicketDetailModal({
                 <div>
                   <p className="mb-1 text-xs text-muted-foreground uppercase">STATUS</p>
                   <Badge
-                    variant="success"
-                    className="bg-green-100 text-green-700 hover:bg-green-100"
+                    variant="outline"
+                    className="border-green-200 bg-green-100 text-green-700 hover:bg-green-100"
                   >
-                    <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-green-500"></span> COMPLETED
+                    <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-green-500"></span>{' '}
+                    {ticketDetailMock.status}
                   </Badge>
                 </div>
 
                 <div>
                   <p className="mb-1 text-xs text-muted-foreground uppercase">TITLE</p>
-                  <p className="text-sm font-semibold">Stamp for Contract 1</p>
+                  <p className="text-sm font-semibold">{ticketDetailMock.title}</p>
                 </div>
 
                 <div>
                   <p className="mb-1 text-xs text-muted-foreground uppercase">CONTENT</p>
-                  <p className="text-sm text-slate-700">
-                    Please stamp for this contract. This is required for the upcoming academic
-                    partnership agreement.
-                  </p>
+                  <p className="text-sm text-slate-700">{ticketDetailMock.content}</p>
                 </div>
 
                 <div>
                   <p className="mb-1 text-xs text-muted-foreground uppercase">ASSIGNED TO</p>
                   <div className="mt-1 flex items-center gap-3">
                     <Image
-                      src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                      src={ticketDetailMock.assignee.avatar}
                       alt="Assignee"
                       width={32}
                       height={32}
@@ -92,32 +90,37 @@ export function TicketDetailModal({
                       unoptimized
                     />
                     <div>
-                      <p className="text-sm font-semibold">Phan Gia Tâm</p>
-                      <p className="text-xs text-muted-foreground">Department Admin</p>
+                      <p className="text-sm font-semibold">{ticketDetailMock.assignee.name}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {ticketDetailMock.assignee.role}
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 <div>
                   <p className="mb-2 text-xs text-muted-foreground uppercase">ATTACHMENTS</p>
-                  <div className="flex items-center gap-3 rounded-lg border bg-muted/20 p-2">
-                    <div className="rounded-md bg-red-50 p-1.5 text-red-500">
-                      <FileText className="h-4 w-4" />
+                  {ticketDetailMock.attachments.map((file, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-3 rounded-lg border bg-muted/20 p-2"
+                    >
+                      <div className="rounded-md bg-red-50 p-1.5 text-red-500">
+                        <FileText className="h-4 w-4" />
+                      </div>
+                      <p className="truncate text-xs font-medium">{file.name}</p>
                     </div>
-                    <p className="truncate text-xs font-medium">
-                      partnercontractgenerate1750...pdf
-                    </p>
-                  </div>
+                  ))}
                 </div>
 
                 <div className="mt-2 grid grid-cols-2 gap-4">
                   <div>
                     <p className="mb-1 text-xs text-muted-foreground uppercase">CREATED</p>
-                    <p className="text-xs font-semibold">31-07-2025 11:33 AM</p>
+                    <p className="text-xs font-semibold">{ticketDetailMock.created}</p>
                   </div>
                   <div>
                     <p className="mb-1 text-xs text-muted-foreground uppercase">DEADLINE</p>
-                    <p className="text-xs font-semibold">02-08-2025 06:32 PM</p>
+                    <p className="text-xs font-semibold">{ticketDetailMock.deadline}</p>
                   </div>
                 </div>
               </div>

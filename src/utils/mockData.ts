@@ -385,3 +385,35 @@ export const recentActivity = [
     owners: [{ id: 'u3', label: 'AT', color: 'blue', text: 'blue' }],
   },
 ];
+
+export const ticketDetailMock = {
+  status: 'COMPLETED',
+  title: 'Stamp for Contract 1',
+  content:
+    'Please stamp for this contract. This is required for the upcoming academic partnership agreement.',
+  assignee: {
+    name: 'Phan Gia Tâm',
+    role: 'Department Admin',
+    avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+  },
+  attachments: [{ name: 'partnercontractgenerate1750...pdf', icon: 'file' }],
+  created: '31-07-2025 11:33 AM',
+  deadline: '02-08-2025 06:32 PM',
+};
+
+export const dataBarMock = [
+  { name: '22TH JAN', views: 4000 },
+  { name: '23TH JAN', views: 3000 },
+  { name: '24TH JAN', views: 2000 },
+  { name: '25TH JAN', views: 2780 },
+  { name: '26TH JAN', views: 1890 },
+  { name: '27TH JAN', views: 2390 },
+  { name: 'TODAY', views: 3490 },
+];
+
+export const dataPieMock = [
+  { name: 'DOCUMENTS', value: 428, color: '#3b82f6' },
+  { name: 'IMAGES', value: 544, color: '#10b981' },
+  { name: 'VIDEOS', value: 312, color: '#f59e0b' },
+  { name: 'OTHERS', value: 120, color: '#ef4444' },
+];

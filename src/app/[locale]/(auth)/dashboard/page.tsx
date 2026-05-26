@@ -27,24 +27,12 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { latestPublished, recentlyInteracted } from '@/utils/mockData';
-
-const dataBar = [
-  { name: '22TH JAN', views: 4000 },
-  { name: '23TH JAN', views: 3000 },
-  { name: '24TH JAN', views: 2000 },
-  { name: '25TH JAN', views: 2780 },
-  { name: '26TH JAN', views: 1890 },
-  { name: '27TH JAN', views: 2390 },
-  { name: 'TODAY', views: 3490 },
-];
-
-const dataPie = [
-  { name: 'DOCUMENTS', value: 428, color: '#3b82f6' },
-  { name: 'IMAGES', value: 544, color: '#10b981' },
-  { name: 'VIDEOS', value: 312, color: '#f59e0b' },
-  { name: 'OTHERS', value: 120, color: '#ef4444' },
-];
+import {
+  latestPublished,
+  recentlyInteracted,
+  dataBarMock as dataBar,
+  dataPieMock as dataPie,
+} from '@/utils/mockData';
 
 function getDocTypeClass(type: string): string {
   if (type === 'WORD') {

@@ -166,6 +166,7 @@ jobs:
 
       - name: Run visual regression tests
         uses: chromaui/action@v16
+        if: ${{ secrets.CHROMATIC_PROJECT_TOKEN != '' }}
         with:
           playwright: true
           exitOnceUploaded: true # Speed up by skipping the build results
