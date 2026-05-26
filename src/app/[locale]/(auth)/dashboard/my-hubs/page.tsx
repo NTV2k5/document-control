@@ -7,14 +7,16 @@ import {
   Video,
   FileText,
   Archive,
-  Terminal,
-  Palette,
-  FlaskConical,
-  Sigma,
-  Brain,
-  Leaf,
-  Rocket,
+  Folder,
+  Pencil,
+  Download,
+  Move,
+  Share2,
+  Trash2,
+  FolderPlus,
+  FilePlus,
 } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -25,13 +27,23 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { universityDepartments, universityProjects } from '@/utils/mockData';
+import { myHubFolders } from '@/utils/mockData';
 
-export default function UniversityHubs() {
+export default function MyHubs() {
+  const [openMenuId, setOpenMenuId] = useState<number | null>(null);
+
+  const toggleMenu = (index: number) => {
+    if (openMenuId === index) {
+      setOpenMenuId(null);
+    } else {
+      setOpenMenuId(index);
+    }
+  };
+
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 pb-10">
       <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl font-bold">University Hub</h2>
+        <h2 className="text-2xl font-bold">My Hubs</h2>
         <Button variant="outline" className="flex items-center gap-2">
           <Filter className="h-4 w-4" /> Filter
         </Button>
@@ -112,96 +124,93 @@ export default function UniversityHubs() {
         </Card>
       </div>
 
-      {/* Departments */}
+      {/* Folders */}
       <div>
         <div className="mb-4 flex items-center justify-between">
-          <h3 className="flex items-center gap-2 text-lg font-bold">
-            <span className="text-blue-600">🏛</span> Departments
-          </h3>
-          <Button variant="link" className="font-medium text-blue-600">
-            View Directory
-          </Button>
+          <h3 className="text-lg font-bold">Folders</h3>
+          <div className="flex gap-3">
+            <Button className="bg-blue-600 text-xs hover:bg-blue-700">
+              <FolderPlus className="mr-2 h-4 w-4" /> Create Folder
+            </Button>
+            <Button variant="outline" className="text-xs">
+              <FilePlus className="mr-2 h-4 w-4" /> Add File
+            </Button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
-          {universityDepartments.map((dept, i) => (
-            <Card key={i} className="group cursor-pointer transition-colors hover:border-primary">
-              <CardContent className="relative p-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-6">
+          {myHubFolders.map((folder, i) => (
+            <Card
+              key={i}
+              className="relative cursor-pointer overflow-visible transition-colors hover:border-primary"
+            >
+              <CardContent className="p-4">
                 <div className="mb-4 flex items-start justify-between">
-                  <div className={`rounded-xl p-3 bg-${dept.color}-50 text-${dept.color}-500`}>
-                    {dept.icon === 'terminal' && <Terminal className="h-5 w-5 text-blue-500" />}
-                    {dept.icon === 'palette' && <Palette className="h-5 w-5 text-red-500" />}
-                    {dept.icon === 'flask' && <FlaskConical className="h-5 w-5 text-green-500" />}
-                    {dept.icon === 'sigma' && <Sigma className="h-5 w-5 text-amber-500" />}
-                  </div>
-                  <button className="text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
-                    <MoreVertical className="h-4 w-4" />
-                  </button>
-                </div>
-                <h4 className="mb-1 text-sm font-semibold">{dept.name}</h4>
-                <p className="text-xs text-muted-foreground">
-                  {dept.size} • {dept.files} files
-                </p>
-
-                {/* Simulated Hover Context Menu on the first item */}
-                {i === 3 && (
-                  <div className="absolute top-12 right-0 z-10 w-48 rounded-xl border bg-white py-1 text-sm shadow-lg">
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">✏️</span> Rename Dept
-                    </button>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">📥</span> Download All
-                    </button>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">📁</span> Move Directory
-                    </button>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-slate-700 hover:bg-muted">
-                      <span className="text-xs">🔗</span> Share Access
-                    </button>
-                    <div className="my-1 h-px bg-border"></div>
-                    <button className="flex w-full items-center gap-2 px-4 py-2 text-left text-red-600 hover:bg-muted">
-                      <span className="text-xs">🗑️</span> Archive Dept
-                    </button>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      {/* Active Projects */}
-      <div>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="flex items-center gap-2 text-lg font-bold">
-            <span className="text-blue-600">⚛</span> Active Projects
-          </h3>
-          <Button variant="link" className="font-medium text-blue-600">
-            View All Projects
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
-          {universityProjects.map((project, i) => (
-            <Card key={i} className="group cursor-pointer transition-colors hover:border-primary">
-              <CardContent className="p-5">
-                <div className="mb-4 flex items-start justify-between">
-                  <div
-                    className={`rounded-xl p-3 bg-${project.color}-50 text-${project.color}-500`}
+                  {folder.isPdf ? (
+                    <div className="rounded-lg bg-red-50 p-2 text-red-500">
+                      <FileText className="h-6 w-6" />
+                    </div>
+                  ) : (
+                    <div className="rounded-lg bg-blue-50 p-2 text-blue-500">
+                      <Folder className="h-6 w-6 fill-current" />
+                    </div>
+                  )}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleMenu(i);
+                    }}
+                    className="rounded-md p-1 text-muted-foreground hover:bg-muted"
                   >
-                    {project.icon === 'brain' && <Brain className="h-5 w-5 text-blue-500" />}
-                    {project.icon === 'leaf' && <Leaf className="h-5 w-5 text-green-500" />}
-                    {project.icon === 'rocket' && <Rocket className="h-5 w-5 text-purple-500" />}
-                    {project.icon === 'archive' && <Archive className="h-5 w-5 text-amber-500" />}
-                  </div>
-                  <button className="text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
                     <MoreVertical className="h-4 w-4" />
                   </button>
                 </div>
-                <h4 className="mb-1 text-sm font-semibold">{project.name}</h4>
-                <p className="text-xs text-muted-foreground">
-                  {project.size} • {project.members} partners
-                </p>
+                <h4 className="mb-1 truncate text-sm font-semibold" title={folder.name}>
+                  {folder.name}
+                </h4>
+                {!folder.isPdf && (
+                  <p className="text-xs text-muted-foreground">
+                    {folder.size} • {folder.files} files
+                  </p>
+                )}
+
+                {/* Context Menu */}
+                {openMenuId === i && (
+                  <>
+                    <button
+                      type="button"
+                      aria-label="Close menu"
+                      className="fixed inset-0 z-40 cursor-default"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenMenuId(null);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Escape') {
+                          setOpenMenuId(null);
+                        }
+                      }}
+                    ></button>
+                    <div className="animate-in fade-in zoom-in-95 absolute top-10 right-[-40px] z-50 w-48 rounded-xl border bg-white py-1 text-sm shadow-xl duration-200">
+                      <button className="flex w-full items-center gap-3 px-4 py-2 text-left font-medium text-slate-700 hover:bg-muted">
+                        <Pencil className="h-4 w-4 text-muted-foreground" /> Rename
+                      </button>
+                      <button className="flex w-full items-center gap-3 px-4 py-2 text-left font-medium text-slate-700 hover:bg-muted">
+                        <Download className="h-4 w-4 text-muted-foreground" /> Download
+                      </button>
+                      <button className="flex w-full items-center gap-3 px-4 py-2 text-left font-medium text-slate-700 hover:bg-muted">
+                        <Move className="h-4 w-4 text-muted-foreground" /> Move
+                      </button>
+                      <button className="flex w-full items-center gap-3 px-4 py-2 text-left font-medium text-slate-700 hover:bg-muted">
+                        <Share2 className="h-4 w-4 text-muted-foreground" /> Share
+                      </button>
+                      <div className="my-1 h-px bg-border"></div>
+                      <button className="flex w-full items-center gap-3 px-4 py-2 text-left font-medium text-red-600 hover:bg-red-50">
+                        <Trash2 className="h-4 w-4" /> Delete
+                      </button>
+                    </div>
+                  </>
+                )}
               </CardContent>
             </Card>
           ))}
@@ -240,7 +249,7 @@ export default function UniversityHubs() {
                 <TableCell className="text-xs text-muted-foreground">Computer Science</TableCell>
                 <TableCell>
                   <div className="flex -space-x-2">
-                    <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white bg-orange-100 text-[10px]">
+                    <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white bg-orange-100 text-[10px] font-bold text-orange-600">
                       C
                     </div>
                     <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white bg-blue-100 text-[10px]">
