@@ -1,8 +1,18 @@
 import { Image as ImageIcon, Video, FileText, Archive } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { hubSummaryCards } from '@/utils/mockData';
+type MyHubSummaryProps = {
+  cards: {
+    id: string;
+    type: string;
+    count: number;
+    size: string;
+    percentage: number;
+    color: string;
+    icon: string;
+  }[];
+};
 
-export function MyHubSummary() {
+export function MyHubSummary({ cards }: MyHubSummaryProps) {
   const getIcon = (type: string) => {
     switch (type) {
       case 'Images': {
@@ -65,7 +75,7 @@ export function MyHubSummary() {
 
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-      {hubSummaryCards.map((card) => {
+      {cards.map((card) => {
         const colors = getColorClasses(card.color);
         return (
           <Card key={card.id}>

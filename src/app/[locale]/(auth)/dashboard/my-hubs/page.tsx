@@ -6,7 +6,7 @@ import { MyHubFolders } from '@/components/dashboard/my-hubs/MyHubFolders';
 import { MyHubSummary } from '@/components/dashboard/my-hubs/MyHubSummary';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
 import { Button } from '@/components/ui/button';
-import { recentActivity, trendingTags } from '@/utils/mockData';
+import { recentActivity, trendingTags, hubSummaryCards } from '@/utils/mockData';
 
 export default function MyHubs() {
   return (
@@ -15,13 +15,16 @@ export default function MyHubs() {
 
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold">My Hubs</h2>
-        <Button variant="outline" className="flex items-center gap-2">
+        <Button
+          variant="outline"
+          className="flex cursor-pointer items-center gap-2 rounded-full px-5 font-bold shadow-sm"
+        >
           <Filter className="h-4 w-4" /> Filter
         </Button>
       </div>
 
       {/* Hub Summary Cards */}
-      <MyHubSummary />
+      <MyHubSummary cards={hubSummaryCards} />
 
       {/* Folders */}
       <div>

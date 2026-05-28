@@ -3,7 +3,7 @@
 import { Filter } from 'lucide-react';
 import { HubSection } from '@/components/dashboard/hubs/HubSection';
 import { HubRecentActivity } from '@/components/dashboard/hubs/HubRecentActivity';
-import { HubSummaryCards } from '@/components/dashboard/hubs/HubSummaryCards';
+import { MyHubSummary } from '@/components/dashboard/my-hubs/MyHubSummary';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
 import { Button } from '@/components/ui/button';
 import {
@@ -29,7 +29,7 @@ export default function UniversityHubs() {
       </div>
 
       {/* Hub Summary Cards */}
-      <HubSummaryCards cards={hubSummaryCards} />
+      <MyHubSummary cards={hubSummaryCards} />
 
       {/* Departments */}
       <HubSection
