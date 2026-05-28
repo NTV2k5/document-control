@@ -17,6 +17,8 @@ const isAuthPage = createRouteMatcher([
   '/:locale/sign-up(.*)',
 ]);
 
+const isPublicRoute = createRouteMatcher(['/', '/:locale', '/:locale/']);
+
 // Improve security with Arcjet
 const aj = arcjet.withRule(
   detectBot({
@@ -31,7 +33,7 @@ const aj = arcjet.withRule(
   }),
 );
 
-export default async function proxy(request: NextRequest, event: NextFetchEvent) {
+export default async function middleware(request: NextRequest, event: NextFetchEvent) {
   // Verify the request with Arcjet
   // Use `process.env` instead of Env to reduce bundle size in middleware
   if (process.env.ARCJET_KEY) {
@@ -43,7 +45,7 @@ export default async function proxy(request: NextRequest, event: NextFetchEvent)
   }
 
   // Clerk keyless mode doesn't work with i18n, this is why we need to run the middleware conditionally
-  if (isAuthPage(request) || isProtectedRoute(request)) {
+  if (isAuthPage(request) || isProtectedRoute(request) || isPublicRoute(request)) {
     // Match Clerk's documented middleware composition pattern, `return await` is not necessary.
     // oxlint-disable-next-line typescript/return-await
     return clerkMiddleware(async (auth, req) => {
