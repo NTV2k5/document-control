@@ -2,9 +2,11 @@
 
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { Card, CardContent } from '@/components/ui/card';
-import { dataBarMock as dataBar } from '@/utils/mockData';
+type EngagementAnalyticsProps = {
+  data: { name: string; views: number }[];
+};
 
-export function EngagementAnalytics() {
+export function EngagementAnalytics({ data }: EngagementAnalyticsProps) {
   return (
     <Card className="rounded-2xl border-none shadow-sm ring-1 ring-slate-100">
       <CardContent className="p-8">
@@ -20,7 +22,7 @@ export function EngagementAnalytics() {
         </div>
         <div className="h-[220px] w-full">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={dataBar} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
+            <BarChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
               <XAxis
                 dataKey="name"
                 axisLine={false}
@@ -37,10 +39,10 @@ export function EngagementAnalytics() {
                 }}
               />
               <Bar dataKey="views" radius={[8, 8, 8, 8]} barSize={50}>
-                {dataBar.map((_, index) => (
+                {data.map((_, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={index === dataBar.length - 1 ? '#2563eb' : '#dbeafe'}
+                    fill={index === data.length - 1 ? '#2563eb' : '#dbeafe'}
                   />
                 ))}
               </Bar>

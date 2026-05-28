@@ -2,9 +2,11 @@ import { Bot } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { trendingNow } from '@/utils/mockData';
+type OverviewBannerProps = {
+  trendingData: { rank: string | number; title: string; dept: string }[];
+};
 
-export function OverviewBanner() {
+export function OverviewBanner({ trendingData }: OverviewBannerProps) {
   return (
     <div className="mb-6">
       <div className="mb-4 flex items-center justify-between">
@@ -82,7 +84,7 @@ export function OverviewBanner() {
               TRENDING NOW
             </h3>
             <div className="space-y-4">
-              {trendingNow.map((item, i) => (
+              {trendingData.map((item, i) => (
                 <div
                   key={i}
                   className="flex cursor-pointer items-center gap-4 rounded-xl border border-blue-500/30 bg-blue-700/50 p-4 transition-colors hover:bg-blue-700/80"

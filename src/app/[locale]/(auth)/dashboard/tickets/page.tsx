@@ -8,7 +8,7 @@ import { TicketTable } from '@/components/dashboard/tickets/TicketTable';
 import { TicketTabs } from '@/components/dashboard/tickets/TicketTabs';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
 import { Button } from '@/components/ui/button';
-import { ticketList } from '@/utils/mockData';
+import { ticketList, trendingTags } from '@/utils/mockData';
 
 export default function Tickets() {
   const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
@@ -50,7 +50,7 @@ export default function Tickets() {
 
   return (
     <div className="space-y-8 pb-10">
-      <TrendingHashtags />
+      <TrendingHashtags tags={trendingTags} />
 
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-3xl font-bold">Ticket</h2>

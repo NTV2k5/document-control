@@ -8,6 +8,15 @@ import { QuickAccess } from '@/components/dashboard/QuickAccess';
 import { RecentlyInteracted } from '@/components/dashboard/RecentlyInteracted';
 import { StatsOverview } from '@/components/dashboard/StatsOverview';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
+import {
+  trendingTags,
+  trendingNow,
+  statsOverview,
+  dataBarMock,
+  dataPieMock,
+  latestPublished,
+  recentlyInteracted,
+} from '@/utils/mockData';
 
 export default async function DashboardOverview(props: { params: Promise<{ locale: string }> }) {
   const { locale } = await props.params;
@@ -16,28 +25,28 @@ export default async function DashboardOverview(props: { params: Promise<{ local
   return (
     <div className="space-y-8 pb-10">
       {/* Trending Tags */}
-      <TrendingHashtags />
+      <TrendingHashtags tags={trendingTags} />
 
       {/* Hero Banner & Trending Now */}
-      <OverviewBanner />
+      <OverviewBanner trendingData={trendingNow} />
 
       {/* Stats Cards */}
-      <StatsOverview />
+      <StatsOverview data={statsOverview} />
 
       {/* Analytics Charts */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <EngagementAnalytics />
-        <FileDistribution />
+        <EngagementAnalytics data={dataBarMock} />
+        <FileDistribution data={dataPieMock} />
       </div>
 
       {/* Important Unread Alert */}
       <ImportantAlert />
 
       {/* Latest Published */}
-      <LatestPublished />
+      <LatestPublished docs={latestPublished} />
 
       {/* Recently Interacted */}
-      <RecentlyInteracted />
+      <RecentlyInteracted docs={recentlyInteracted} />
 
       {/* Quick Access */}
       <QuickAccess />

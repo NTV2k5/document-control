@@ -3,9 +3,11 @@
 import { FileText, Image as ImageIcon, Video, FileArchive } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { Card, CardContent } from '@/components/ui/card';
-import { dataPieMock as dataPie } from '@/utils/mockData';
+type FileDistributionProps = {
+  data: { name: string; value: number; color: string }[];
+};
 
-export function FileDistribution() {
+export function FileDistribution({ data }: FileDistributionProps) {
   const getIcon = (name: string) => {
     switch (name) {
       case 'DOCUMENTS': {
@@ -54,14 +56,14 @@ export function FileDistribution() {
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={dataPie}
+                  data={data}
                   innerRadius={24}
                   outerRadius={32}
                   paddingAngle={4}
                   dataKey="value"
                   stroke="none"
                 >
-                  {dataPie.map((entry, index) => (
+                  {data.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
@@ -71,7 +73,7 @@ export function FileDistribution() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {dataPie.map((item, i) => (
+          {data.map((item, i) => (
             <div
               key={i}
               className="flex items-center justify-between rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-100 transition-shadow hover:shadow-md"

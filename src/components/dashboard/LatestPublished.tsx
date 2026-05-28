@@ -2,9 +2,20 @@ import { Scale, ShieldCheck, TerminalSquare } from 'lucide-react';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { latestPublished } from '@/utils/mockData';
+type LatestPublishedProps = {
+  docs: {
+    id: string | number;
+    type: string;
+    title: string;
+    description: string;
+    creator: string;
+    date: string;
+    downloads?: number;
+    views?: number;
+  }[];
+};
 
-export function LatestPublished() {
+export function LatestPublished({ docs }: LatestPublishedProps) {
   const getBadgeVariant = (type: string): 'default' | 'success' | 'warning' => {
     if (type === 'REGULATION') return 'default';
     if (type === 'POLICY') return 'success';
@@ -26,7 +37,7 @@ export function LatestPublished() {
         </button>
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-        {latestPublished.map((doc) => (
+        {docs.map((doc) => (
           <Card
             key={doc.id}
             className="cursor-pointer rounded-2xl border-none shadow-sm ring-1 ring-slate-100 transition-all hover:shadow-md hover:ring-slate-200"

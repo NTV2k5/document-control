@@ -8,7 +8,7 @@ import { DocumentTable } from '@/components/dashboard/published/DocumentTable';
 import { PublishedTabs } from '@/components/dashboard/published/PublishedTabs';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
 import { Button } from '@/components/ui/button';
-import { publishedDocumentsList, publishedDocuments, documentDetailMock } from '@/utils/mockData';
+import { publishedDocumentsList, publishedDocuments, documentDetailMock, trendingTags } from '@/utils/mockData';
 
 export default function PublishedDocuments() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -47,7 +47,7 @@ export default function PublishedDocuments() {
       {/* Main Content Area */}
       <div className="flex flex-1 flex-col overflow-hidden">
         <div className="mb-4">
-          <TrendingHashtags />
+          <TrendingHashtags tags={trendingTags} />
         </div>
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-slate-900">Published Documents</h2>

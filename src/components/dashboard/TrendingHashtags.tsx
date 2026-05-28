@@ -1,13 +1,15 @@
-import { trendingTags } from '@/utils/mockData';
+type TrendingHashtagsProps = {
+  tags: string[];
+};
 
-export function TrendingHashtags() {
+export function TrendingHashtags({ tags }: TrendingHashtagsProps) {
   return (
     <div className="mb-6 flex items-center gap-3">
       <span className="mr-2 text-sm font-semibold tracking-wider text-muted-foreground uppercase">
         TRENDING
       </span>
       <div className="flex flex-wrap items-center gap-3">
-        {trendingTags.map((tag, i) => {
+        {tags.map((tag, i) => {
           const isBlue = i % 2 !== 0; // Alternate colors
           return (
             <button

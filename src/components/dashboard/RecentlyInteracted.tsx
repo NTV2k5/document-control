@@ -8,9 +8,17 @@ import {
   Video,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { recentlyInteracted } from '@/utils/mockData';
+type RecentlyInteractedProps = {
+  docs: {
+    id: string | number;
+    type: string;
+    title: string;
+    description: string;
+    edited: string;
+  }[];
+};
 
-export function RecentlyInteracted() {
+export function RecentlyInteracted({ docs }: RecentlyInteractedProps) {
   const getDocTypeClass = (type: string): { bg: string; text: string; iconBg: string } => {
     if (type === 'WORD') {return { bg: 'bg-blue-50', text: 'text-blue-500', iconBg: 'bg-white' };}
     if (type === 'EXCEL')
@@ -37,7 +45,7 @@ export function RecentlyInteracted() {
         <button className="text-sm font-bold text-blue-600 hover:underline">View History</button>
       </div>
       <div className="hide-scrollbar flex gap-5 overflow-x-auto px-1 pt-2 pb-6">
-        {recentlyInteracted.map((doc) => {
+        {docs.map((doc) => {
           const styles = getDocTypeClass(doc.type);
           return (
             <Card

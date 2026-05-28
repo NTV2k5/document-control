@@ -6,12 +6,12 @@ import { MyHubFolders } from '@/components/dashboard/my-hubs/MyHubFolders';
 import { MyHubSummary } from '@/components/dashboard/my-hubs/MyHubSummary';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
 import { Button } from '@/components/ui/button';
-import { recentActivity } from '@/utils/mockData';
+import { recentActivity, trendingTags } from '@/utils/mockData';
 
 export default function MyHubs() {
   return (
     <div className="space-y-8 pb-10">
-      <TrendingHashtags />
+      <TrendingHashtags tags={trendingTags} />
 
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold">My Hubs</h2>

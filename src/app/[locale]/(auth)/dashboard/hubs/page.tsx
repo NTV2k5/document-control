@@ -11,12 +11,13 @@ import {
   universityProjects,
   hubSummaryCards,
   recentActivity,
+  trendingTags,
 } from '@/utils/mockData';
 
 export default function UniversityHubs() {
   return (
     <div className="space-y-8 pb-8">
-      <TrendingHashtags />
+      <TrendingHashtags tags={trendingTags} />
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-slate-900">University Hub</h2>
         <Button
