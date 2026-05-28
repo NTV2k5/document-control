@@ -2,7 +2,7 @@ import { Image as ImageIcon, Video, FileText, Archive } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 type MyHubSummaryProps = {
   cards: {
-    id: string;
+    id: string | number;
     type: string;
     count: number;
     size: string;
