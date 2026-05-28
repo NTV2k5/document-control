@@ -417,3 +417,91 @@ export const dataPieMock = [
   { name: 'VIDEOS', value: 312, color: '#f59e0b' },
   { name: 'OTHERS', value: 120, color: '#ef4444' },
 ];
+
+export const trendingTags = [
+  '#AIEthics',
+  '#QuantumComputing',
+  '#ModernArchitecture',
+  '#Sustainability',
+  '#Neuroscience',
+  '#DigitalHumanities',
+];
+
+export const trendingNow = [
+  { rank: '01', title: 'Exam Preparation: AI Tools Policy', dept: '120 views • Academic Affairs' },
+  { rank: '02', title: 'Summer Internship 2024 Portal Open', dept: '200 entries • Career Hub' },
+  { rank: '03', title: 'New Student Housing Regulations', dept: '450 views • Housing Office' },
+  { rank: '04', title: 'New Student Housing Regulations', dept: '450 views • Housing Office' },
+  { rank: '05', title: 'New Student Housing Regulations', dept: '450 views • Housing Office' },
+];
+
+export const statsOverview = {
+  publishedFiles: {
+    label: 'Published Files',
+    value: '1,284',
+    trend: '↗ +12% this month',
+    trendColor: 'text-green-600',
+  },
+  myFiles: {
+    label: 'My Files',
+    value: '452',
+    trend: '↗ +5% increase this month',
+    trendColor: 'text-green-600',
+  },
+  sharingFiles: {
+    label: 'Sharing Files',
+    value: '50',
+    trend: 'Sharing for 38 emails',
+    trendColor: 'text-muted-foreground',
+  },
+};
+
+export const documentDetailMock = {
+  id: 'MH-Admin 25-0044',
+  documentId: '#5221386_20251212',
+  createdOn: '12-12-2025 12:15 AM',
+  status: 'ACTIVE',
+  folder: 'Nhân sự (Human Resources)',
+  tags: ['#Company Docs', '#Internal', '#2025'],
+};
+
+export const profileInfoMock = {
+  name: 'Dr. Sarah Jenkins',
+  role: 'Dean of Information Systems',
+  status: 'Active',
+  avatar: 'https://i.pravatar.cc/150?u=a042581f4e29026024d',
+  email: 'tam.nguyen@giadinh.edu.vn',
+  department: 'Information Management Dept.',
+  phone: '+84 982 727 272',
+  location: 'Main Campus, Building A',
+  bio: 'Seasoned Dean with over 15 years of experience in higher education data governance and information systems management. Leading the digital transformation initiative at University Central.',
+};
+
+export const storageDataMock = [
+  { name: 'Documents', value: 65, color: '#3b82f6', size: '2.8 TB' },
+  { name: 'Media Assets', value: 35, color: '#e2e8f0', size: '1.4 TB' },
+];
+
+export const recentActivityLogs = [
+  {
+    id: 1,
+    title: 'Updated "Enrollment_Form_V2"',
+    time: '2 hours ago',
+    category: 'Document',
+    color: 'bg-blue-600',
+  },
+  {
+    id: 2,
+    title: 'Login from New Device',
+    time: 'Yesterday at 10:45 AM',
+    category: 'Security',
+    color: 'bg-green-500',
+  },
+  {
+    id: 3,
+    title: 'Password Changed',
+    time: 'Oct 24, 2025',
+    category: 'Security',
+    color: 'bg-yellow-500',
+  },
+];

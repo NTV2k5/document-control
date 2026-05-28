@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
-import { Header } from '@/components/ui/Header';
-import { Sidebar } from '@/components/ui/Sidebar';
+import { ChatbotButton } from '@/components/ChatbotButton';
+import { Header } from '@/components/Header';
+import { Sidebar } from '@/components/Sidebar';
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ export default async function DashboardLayout(props: DashboardLayoutProps) {
         <Header />
         <main className="flex-1 overflow-y-auto p-8">{props.children}</main>
       </div>
+      <ChatbotButton />
     </div>
   );
 }

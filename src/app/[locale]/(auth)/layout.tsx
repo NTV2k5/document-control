@@ -1,7 +1,19 @@
+import { enUS, frFR } from '@clerk/localizations';
 import { ClerkProvider } from '@clerk/nextjs';
+import type { LocalizationResource } from '@clerk/shared/types';
 import { setRequestLocale } from 'next-intl/server';
+import { ChatbotButton } from '@/components/ChatbotButton';
 import { routing } from '@/libs/I18nRouting';
-import { ClerkLocalizations } from '@/utils/AppConfig';
+
+const supportedLocales: Record<string, LocalizationResource> = {
+  en: enUS,
+  fr: frFR,
+};
+
+const ClerkLocalizations = {
+  defaultLocale: enUS,
+  supportedLocales,
+};
 
 export default async function AuthLayout(props: {
   children: React.ReactNode;
@@ -36,6 +48,7 @@ export default async function AuthLayout(props: {
       signUpFallbackRedirectUrl={dashboardUrl}
       afterSignOutUrl={afterSignOutUrl}
     >
+      <ChatbotButton />
       {props.children}
     </ClerkProvider>
   );

@@ -61,7 +61,7 @@ export function TicketDetailModal({
                   <p className="mb-1 text-xs text-muted-foreground uppercase">STATUS</p>
                   <Badge
                     variant="outline"
-                    className="border-green-200 bg-green-100 text-green-700 hover:bg-green-100"
+                    className="w-max border-green-200 bg-green-100 px-2 py-0.5 text-[10px] font-bold tracking-wider text-green-600 uppercase hover:bg-green-100"
                   >
                     <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-green-500"></span>{' '}
                     {ticketDetailMock.status}
@@ -103,12 +103,12 @@ export function TicketDetailModal({
                   {ticketDetailMock.attachments.map((file, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center gap-3 rounded-lg border bg-muted/20 p-2"
+                      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-2 shadow-sm"
                     >
-                      <div className="rounded-md bg-red-50 p-1.5 text-red-500">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-500">
                         <FileText className="h-4 w-4" />
                       </div>
-                      <p className="truncate text-xs font-medium">{file.name}</p>
+                      <p className="truncate text-sm font-medium text-slate-700">{file.name}</p>
                     </div>
                   ))}
                 </div>
@@ -141,7 +141,7 @@ export function TicketDetailModal({
                 <div key={item.id} className="relative flex gap-4">
                   {/* Timeline connecting line */}
                   {index !== ticketHistory.length - 1 && (
-                    <div className="absolute top-8 bottom-[-24px] left-[15px] w-[2px] bg-border"></div>
+                    <div className="absolute top-8 bottom-[-24px] left-[15px] w-[2px] bg-slate-100"></div>
                   )}
 
                   {/* Timeline icon */}
@@ -192,22 +192,26 @@ export function TicketDetailModal({
 
                     {item.comment && (
                       <div
-                        className={`rounded-xl border p-3 ${item.type === 'note' ? 'border-l-4 border-blue-100 border-l-blue-500 bg-blue-50/50' : 'bg-muted/30'}`}
+                        className={`rounded-xl border border-slate-200 p-3 shadow-sm ${item.type === 'note' ? 'border-l-4 border-l-blue-500 bg-white' : 'bg-white'}`}
                       >
                         {item.type === 'note' && (
-                          <p className="mb-1 text-[10px] font-bold text-blue-500">NOTE</p>
+                          <p className="mb-2 text-[10px] font-bold tracking-wider text-blue-600 uppercase">
+                            NOTE
+                          </p>
                         )}
-                        <p className="text-sm text-slate-700">{item.comment}</p>
+                        <p className="text-sm text-slate-600">{item.comment}</p>
                       </div>
                     )}
 
                     {item.file && (
-                      <div className="flex w-max items-center gap-3 rounded-lg border bg-muted/20 p-2 pr-6">
-                        <div className="rounded-md bg-red-50 p-1.5 text-red-500">
+                      <div className="flex w-max items-center gap-3 rounded-xl border border-slate-200 bg-white p-2 pr-6 shadow-sm">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-500">
                           <FileText className="h-4 w-4" />
                         </div>
-                        <p className="text-xs font-medium">{item.file}</p>
-                        <button className="ml-4 text-[10px] font-bold text-blue-600">VIEW</button>
+                        <p className="text-sm font-medium text-slate-700">{item.file}</p>
+                        <button className="ml-4 text-xs font-bold text-blue-600 hover:underline">
+                          VIEW
+                        </button>
                       </div>
                     )}
                   </div>
