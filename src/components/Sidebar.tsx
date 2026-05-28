@@ -12,6 +12,7 @@ import {
   Settings,
 } from 'lucide-react';
 import Image from 'next/image';
+import { Logo } from '@/components/Logo';
 import { Link, usePathname } from '@/libs/I18nNavigation';
 import { cn } from '@/utils/cn';
 
@@ -30,7 +31,9 @@ const SidebarItem = ({
     href={href}
     className={cn(
       'flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:bg-muted',
-      active ? 'bg-primary text-primary-foreground hover:bg-primary' : 'text-muted-foreground',
+      active
+        ? 'bg-blue-600 text-white shadow-sm shadow-blue-600/20 hover:bg-blue-700'
+        : 'text-slate-500 hover:text-slate-900',
     )}
   >
     <Icon className="h-4 w-4" />
@@ -42,15 +45,9 @@ export function Sidebar() {
   const currentPath = usePathname();
   return (
     <div className="flex h-screen w-64 flex-col border-r bg-card px-4 py-6">
-      <div className="mb-8 flex items-center gap-2 px-2">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-          <span className="text-lg font-bold text-primary-foreground">M</span>
-        </div>
-        <div>
-          <h2 className="text-lg leading-tight font-bold">Document Control</h2>
-          <p className="text-xs font-semibold tracking-wide text-primary">ADMIN</p>
-        </div>
-      </div>
+      <Link href="/dashboard" className="mb-8 block transition-opacity hover:opacity-80">
+        <Logo />
+      </Link>
 
       <div className="flex-1 space-y-8">
         <nav className="space-y-1">
