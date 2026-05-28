@@ -7,11 +7,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-
-const storageData = [
-  { name: 'Documents', value: 65, color: '#3b82f6' },
-  { name: 'Media Assets', value: 35, color: '#e2e8f0' },
-];
+import {
+  profileInfoMock,
+  storageDataMock as storageData,
+  recentActivityLogs,
+} from '@/utils/mockData';
 
 export default function UserProfile() {
   return (
@@ -29,7 +29,7 @@ export default function UserProfile() {
             <CardContent className="flex flex-col items-start gap-6 p-6 md:flex-row md:items-center">
               <div className="relative">
                 <Image
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                  src={profileInfoMock.avatar}
                   alt="Profile"
                   width={96}
                   height={96}
@@ -44,33 +44,34 @@ export default function UserProfile() {
               <div className="w-full flex-1">
                 <div className="mb-4 flex items-start justify-between">
                   <div>
-                    <h2 className="text-2xl font-bold">Dr. Sarah Jenkins</h2>
-                    <p className="text-muted-foreground">Dean of Information Systems</p>
+                    <h2 className="text-2xl font-bold">{profileInfoMock.name}</h2>
+                    <p className="text-muted-foreground">{profileInfoMock.role}</p>
                   </div>
                   <Badge
                     variant="success"
                     className="bg-green-100 px-3 text-green-700 hover:bg-green-100"
                   >
-                    <span className="mr-2 h-2 w-2 rounded-full bg-green-500"></span> Active
+                    <span className="mr-2 h-2 w-2 rounded-full bg-green-500"></span>{' '}
+                    {profileInfoMock.status}
                   </Badge>
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 text-sm text-muted-foreground md:grid-cols-2">
                   <div className="flex items-center gap-2">
                     <Mail className="h-4 w-4 text-blue-600" />
-                    <span>tam.nguyen@giadinh.edu.vn</span>
+                    <span>{profileInfoMock.email}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Building className="h-4 w-4 text-blue-600" />
-                    <span>Information Management Dept.</span>
+                    <span>{profileInfoMock.department}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Phone className="h-4 w-4 text-blue-600" />
-                    <span>+84 982 727 272</span>
+                    <span>{profileInfoMock.phone}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-blue-600" />
-                    <span>Main Campus, Building A</span>
+                    <span>{profileInfoMock.location}</span>
                   </div>
                 </div>
               </div>
@@ -143,7 +144,7 @@ export default function UserProfile() {
                   <textarea
                     id="bio"
                     className="flex min-h-[80px] w-full rounded-md border border-input bg-muted/30 px-3 py-2 text-sm ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
-                    defaultValue="Seasoned Dean with over 15 years of experience in higher education data governance and information systems management. Leading the digital transformation initiative at University Central."
+                    defaultValue={profileInfoMock.bio}
                   />
                 </div>
               </form>
@@ -189,30 +190,27 @@ export default function UserProfile() {
               </div>
 
               <div className="space-y-3">
-                <div className="flex items-center justify-between rounded-lg bg-muted/30 p-3">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-md bg-blue-100 p-2">
-                      <Clock className="h-4 w-4 text-blue-600" />
+                {storageData.map((data, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center justify-between rounded-lg bg-muted/30 p-3"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className={`rounded-md p-2 ${index === 0 ? 'bg-blue-100' : 'bg-slate-100'}`}
+                      >
+                        <Clock
+                          className={`h-4 w-4 ${index === 0 ? 'text-blue-600' : 'text-slate-600'}`}
+                        />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold">{data.name}</p>
+                        <p className="text-xs text-muted-foreground">{data.size}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold">Documents</p>
-                      <p className="text-xs text-muted-foreground">2.8 TB</p>
-                    </div>
+                    <span className="text-sm font-semibold">{data.value}%</span>
                   </div>
-                  <span className="text-sm font-semibold">65%</span>
-                </div>
-                <div className="flex items-center justify-between rounded-lg bg-muted/30 p-3">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-md bg-slate-100 p-2">
-                      <Clock className="h-4 w-4 text-slate-600" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold">Media Assets</p>
-                      <p className="text-xs text-muted-foreground">1.4 TB</p>
-                    </div>
-                  </div>
-                  <span className="text-sm font-semibold">35%</span>
-                </div>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -222,31 +220,22 @@ export default function UserProfile() {
             <CardContent className="p-6">
               <h3 className="mb-6 font-semibold">Recent Activity</h3>
               <div className="space-y-6">
-                <div className="relative flex gap-4">
-                  <div className="absolute top-6 bottom-[-24px] left-2 w-[2px] bg-border"></div>
-                  <div className="z-10 mt-1 h-4 w-4 shrink-0 rounded-full bg-blue-600 ring-4 ring-white"></div>
-                  <div>
-                    <p className="text-sm font-semibold">Updated "Enrollment_Form_V2"</p>
-                    <p className="text-xs text-muted-foreground">2 hours ago ΓÇó Document</p>
+                {recentActivityLogs.map((log, index) => (
+                  <div key={log.id} className="relative flex gap-4">
+                    {index !== recentActivityLogs.length - 1 && (
+                      <div className="absolute top-6 bottom-[-24px] left-2 w-[2px] bg-border"></div>
+                    )}
+                    <div
+                      className={`z-10 mt-1 h-4 w-4 shrink-0 rounded-full ${log.color} ring-4 ring-white`}
+                    ></div>
+                    <div>
+                      <p className="text-sm font-semibold">{log.title}</p>
+                      <p className="text-xs text-muted-foreground">
+                        {log.time} • {log.category}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="relative flex gap-4">
-                  <div className="absolute top-6 bottom-[-24px] left-2 w-[2px] bg-border"></div>
-                  <div className="z-10 mt-1 h-4 w-4 shrink-0 rounded-full bg-green-500 ring-4 ring-white"></div>
-                  <div>
-                    <p className="text-sm font-semibold">Login from New Device</p>
-                    <p className="text-xs text-muted-foreground">
-                      Yesterday at 10:45 AM ΓÇó Security
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="z-10 mt-1 h-4 w-4 shrink-0 rounded-full bg-yellow-500 ring-4 ring-white"></div>
-                  <div>
-                    <p className="text-sm font-semibold">Password Changed</p>
-                    <p className="text-xs text-muted-foreground">Oct 24, 2025 ΓÇó Security</p>
-                  </div>
-                </div>
+                ))}
               </div>
               <div className="mt-6 text-center">
                 <Button variant="link" className="font-semibold text-blue-600">
