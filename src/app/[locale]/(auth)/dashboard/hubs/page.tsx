@@ -1,8 +1,7 @@
 'use client';
 
 import { Filter } from 'lucide-react';
-import { HubActiveProjects } from '@/components/dashboard/hubs/HubActiveProjects';
-import { HubDepartments } from '@/components/dashboard/hubs/HubDepartments';
+import { HubSection } from '@/components/dashboard/hubs/HubSection';
 import { HubRecentActivity } from '@/components/dashboard/hubs/HubRecentActivity';
 import { HubSummaryCards } from '@/components/dashboard/hubs/HubSummaryCards';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
@@ -32,10 +31,22 @@ export default function UniversityHubs() {
       <HubSummaryCards cards={hubSummaryCards} />
 
       {/* Departments */}
-      <HubDepartments departments={universityDepartments} />
+      <HubSection
+        title="Departments"
+        titleIcon="🏛"
+        actionText="View Directory"
+        items={universityDepartments}
+        labels={{ rename: 'Rename Dept', archive: 'Archive Dept' }}
+      />
 
       {/* Active Projects */}
-      <HubActiveProjects projects={universityProjects} />
+      <HubSection
+        title="Active Projects"
+        titleIcon="⚛"
+        actionText="View All Projects"
+        items={universityProjects}
+        labels={{ rename: 'Rename Project', archive: 'Archive Project' }}
+      />
 
       {/* Recent Activity Table */}
       <HubRecentActivity activityList={recentActivity} />
