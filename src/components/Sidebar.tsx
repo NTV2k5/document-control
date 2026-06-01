@@ -1,5 +1,6 @@
 'use client';
 
+import { useClerk } from '@clerk/nextjs';
 import {
   LayoutDashboard,
   FileText,
@@ -10,6 +11,7 @@ import {
   Users,
   Trash2,
   Settings,
+  LogOut,
 } from 'lucide-react';
 import Image from 'next/image';
 import { Logo } from '@/components/Logo';
@@ -43,6 +45,7 @@ const SidebarItem = ({
 
 export function Sidebar() {
   const currentPath = usePathname();
+  const { signOut } = useClerk();
   return (
     <div className="flex h-screen w-64 flex-col border-r bg-card px-4 py-6">
       <Link href="/dashboard" className="mb-8 block transition-opacity hover:opacity-80">
@@ -124,7 +127,11 @@ export function Sidebar() {
             </div>
           </div>
 
-          <button className="flex w-full items-center justify-center gap-2 rounded-lg border border-destructive/20 py-2 text-sm font-medium text-destructive transition-colors hover:bg-destructive/10">
+          <button
+            onClick={() => signOut()}
+            className="flex w-full items-center justify-center gap-2 rounded-lg border border-destructive/20 py-2 text-sm font-medium text-destructive transition-colors hover:bg-destructive/10"
+          >
+            <LogOut className="h-4 w-4" />
             Sign Out
           </button>
         </div>
