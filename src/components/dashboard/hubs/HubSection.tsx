@@ -61,9 +61,10 @@ export function HubSection({
         <button className="text-sm font-bold text-blue-600 hover:underline">{actionText}</button>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         {items.map((item, i) => {
-          const metadata = item.files !== undefined ? `${item.files} files` : `${item.members} partners`;
+          const metadata =
+            item.files !== undefined ? `${item.files} files` : `${item.members} partners`;
           return (
             <Card
               key={`${title}-${i}`}
@@ -76,7 +77,9 @@ export function HubSection({
                   >
                     {item.icon === 'terminal' && <Terminal className="h-6 w-6" strokeWidth={2.5} />}
                     {item.icon === 'palette' && <Palette className="h-6 w-6" strokeWidth={2.5} />}
-                    {item.icon === 'flask' && <FlaskConical className="h-6 w-6" strokeWidth={2.5} />}
+                    {item.icon === 'flask' && (
+                      <FlaskConical className="h-6 w-6" strokeWidth={2.5} />
+                    )}
                     {item.icon === 'sigma' && <Sigma className="h-6 w-6" strokeWidth={2.5} />}
                     {item.icon === 'brain' && <Brain className="h-6 w-6" strokeWidth={2.5} />}
                     {item.icon === 'leaf' && <Leaf className="h-6 w-6" strokeWidth={2.5} />}
@@ -85,7 +88,7 @@ export function HubSection({
                   </div>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <button className="cursor-pointer rounded-full p-1.5 text-slate-400 opacity-0 transition-all hover:bg-slate-100 hover:text-slate-600 group-hover:opacity-100">
+                      <button className="cursor-pointer rounded-full p-1.5 text-slate-400 opacity-0 transition-all group-hover:opacity-100 hover:bg-slate-100 hover:text-slate-600">
                         <MoreVertical className="h-5 w-5" />
                       </button>
                     </DropdownMenuTrigger>

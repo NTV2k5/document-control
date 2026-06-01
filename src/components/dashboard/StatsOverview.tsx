@@ -14,12 +14,12 @@ export function StatsOverview({ data }: StatsOverviewProps) {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
       <Card className="rounded-2xl border-none shadow-sm ring-1 ring-slate-100">
-        <CardContent className="flex items-center justify-between p-8">
+        <CardContent className="flex items-center justify-between p-5 md:p-8">
           <div>
             <p className="mb-2 text-xs font-bold tracking-wider text-muted-foreground uppercase">
               {data.publishedFiles.label}
             </p>
-            <h4 className="text-4xl font-extrabold text-slate-900">
+            <h4 className="text-3xl font-extrabold text-slate-900 md:text-4xl">
               {data.publishedFiles.value}
             </h4>
             <p className={`mt-2 text-xs font-bold ${data.publishedFiles.trendColor}`}>
@@ -33,12 +33,12 @@ export function StatsOverview({ data }: StatsOverviewProps) {
       </Card>
 
       <Card className="rounded-2xl border-none shadow-sm ring-1 ring-slate-100">
-        <CardContent className="flex items-center justify-between p-8">
+        <CardContent className="flex items-center justify-between p-5 md:p-8">
           <div>
             <p className="mb-2 text-xs font-bold tracking-wider text-muted-foreground uppercase">
               {data.myFiles.label}
             </p>
-            <h4 className="text-4xl font-extrabold text-slate-900">
+            <h4 className="text-3xl font-extrabold text-slate-900 md:text-4xl">
               {data.myFiles.value}
             </h4>
             <p className={`mt-2 text-xs font-bold ${data.myFiles.trendColor}`}>
@@ -52,12 +52,12 @@ export function StatsOverview({ data }: StatsOverviewProps) {
       </Card>
 
       <Card className="rounded-2xl border-none shadow-sm ring-1 ring-slate-100">
-        <CardContent className="flex items-center justify-between p-8">
+        <CardContent className="flex items-center justify-between p-5 md:p-8">
           <div>
             <p className="mb-2 text-xs font-bold tracking-wider text-muted-foreground uppercase">
               {data.sharingFiles.label}
             </p>
-            <h4 className="text-4xl font-extrabold text-slate-900">
+            <h4 className="text-3xl font-extrabold text-slate-900 md:text-4xl">
               {data.sharingFiles.value}
             </h4>
             <div className="mt-2 flex items-center gap-1 text-xs font-bold text-blue-600">

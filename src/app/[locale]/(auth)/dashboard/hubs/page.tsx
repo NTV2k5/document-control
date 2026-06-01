@@ -1,8 +1,8 @@
 'use client';
 
 import { Filter } from 'lucide-react';
-import { HubSection } from '@/components/dashboard/hubs/HubSection';
 import { HubRecentActivity } from '@/components/dashboard/hubs/HubRecentActivity';
+import { HubSection } from '@/components/dashboard/hubs/HubSection';
 import { MyHubSummary } from '@/components/dashboard/my-hubs/MyHubSummary';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
 import { Button } from '@/components/ui/button';

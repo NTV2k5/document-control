@@ -10,7 +10,7 @@ import {
 
 type HubRecentActivityProps = {
   activityList: any[];
-}
+};
 
 export function HubRecentActivity({ activityList }: HubRecentActivityProps) {
   return (
@@ -22,7 +22,7 @@ export function HubRecentActivity({ activityList }: HubRecentActivityProps) {
         </button>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+      <div className="overflow-hidden overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-sm">
         <Table>
           <TableHeader className="bg-slate-50/50">
             <TableRow>

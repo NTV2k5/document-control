@@ -4,7 +4,7 @@ import { ticketMetrics } from '@/utils/mockData';
 
 export function TicketMetrics() {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 md:gap-6 xl:grid-cols-4">
       <Card className="border-blue-100 bg-blue-50/30">
         <CardContent className="flex items-center gap-4 p-6">
           <div className="rounded-2xl bg-blue-100 p-4 text-blue-600">

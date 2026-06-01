@@ -5,13 +5,13 @@ type Tab = {
   label: string;
   count: number | null;
   highlight?: boolean;
-}
+};
 
 type TicketTabsProps = {
   tabs: Tab[];
   activeTab: string;
   setActiveTab: Dispatch<SetStateAction<string>>;
-}
+};
 
 export function TicketTabs({ tabs, activeTab, setActiveTab }: TicketTabsProps) {
   return (

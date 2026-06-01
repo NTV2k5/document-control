@@ -4,7 +4,7 @@ type DocumentGridProps = {
   docs: any[];
   selectedDocId: string | null;
   onSelect: (id: string) => void;
-}
+};
 
 export function DocumentGrid({ docs, selectedDocId, onSelect }: DocumentGridProps) {
   return (

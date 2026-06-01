@@ -8,7 +8,12 @@ import { DocumentTable } from '@/components/dashboard/published/DocumentTable';
 import { PublishedTabs } from '@/components/dashboard/published/PublishedTabs';
 import { TrendingHashtags } from '@/components/dashboard/TrendingHashtags';
 import { Button } from '@/components/ui/button';
-import { publishedDocumentsList, publishedDocuments, documentDetailMock, trendingTags } from '@/utils/mockData';
+import {
+  publishedDocumentsList,
+  publishedDocuments,
+  documentDetailMock,
+  trendingTags,
+} from '@/utils/mockData';
 
 export default function PublishedDocuments() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -17,17 +22,29 @@ export default function PublishedDocuments() {
 
   // Filter docs for List view
   const filteredDocs = publishedDocumentsList.filter((doc) => {
-    if (activeTab === 'all') {return true;}
-    if (activeTab === 'academic') {return doc.name.toLowerCase().includes('academic');}
-    if (activeTab === 'financial') {return doc.name.toLowerCase().includes('financial');}
+    if (activeTab === 'all') {
+      return true;
+    }
+    if (activeTab === 'academic') {
+      return doc.name.toLowerCase().includes('academic');
+    }
+    if (activeTab === 'financial') {
+      return doc.name.toLowerCase().includes('financial');
+    }
     return true;
   });
 
   // For Grid view, we mock the filtering since publishedDocuments is a separate mock array in this demo
   const gridDocs = publishedDocuments.filter((doc) => {
-    if (activeTab === 'all') {return true;}
-    if (activeTab === 'academic') {return doc.tags.some((t) => t.toLowerCase().includes('academic'));}
-    if (activeTab === 'financial') {return false;} // mock data doesn't have financial
+    if (activeTab === 'all') {
+      return true;
+    }
+    if (activeTab === 'academic') {
+      return doc.tags.some((t) => t.toLowerCase().includes('academic'));
+    }
+    if (activeTab === 'financial') {
+      return false;
+    } // mock data doesn't have financial
     return true;
   });
 
@@ -126,7 +143,12 @@ export default function PublishedDocuments() {
       </div>
 
       {/* Right Detail Panel */}
-      <DocumentDetailPanel selectedDoc={selectedDoc} onClose={() => setSelectedDocId(null)} />
+      <DocumentDetailPanel
+        selectedDoc={selectedDoc}
+        onClose={() => {
+          setSelectedDocId(null);
+        }}
+      />
     </div>
   );
 }

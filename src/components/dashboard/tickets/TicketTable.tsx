@@ -24,16 +24,16 @@ type Ticket = {
   sender: string;
   assignedTo: string;
   deadline: string;
-}
+};
 
 type TicketTableProps = {
   tickets: Ticket[];
   onOpenTicket: (id: string, title: string) => void;
-}
+};
 
 export function TicketTable({ tickets, onOpenTicket }: TicketTableProps) {
   return (
-    <div className="rounded-2xl border bg-card shadow-sm">
+    <div className="overflow-x-auto rounded-2xl border bg-card shadow-sm">
       <Table>
         <TableHeader>
           <TableRow>
@@ -188,8 +188,8 @@ export function TicketTable({ tickets, onOpenTicket }: TicketTableProps) {
           ))}
         </TableBody>
       </Table>
-      <div className="grid grid-cols-3 items-center border-t p-4 text-sm font-medium text-slate-500">
-        <div className="text-left">
+      <div className="flex flex-col items-center gap-3 border-t p-4 text-sm font-medium text-slate-500 sm:flex-row sm:justify-between">
+        <div>
           <p>Display 1-7 (7 entries)</p>
         </div>
         <div className="flex items-center justify-center gap-2">
@@ -203,7 +203,7 @@ export function TicketTable({ tickets, onOpenTicket }: TicketTableProps) {
             &gt;
           </button>
         </div>
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-2">
           <span className="mr-2">Results per page</span>
           <select className="rounded-md border border-slate-200 bg-white p-1 px-2 font-medium focus:outline-none">
             <option>10</option>

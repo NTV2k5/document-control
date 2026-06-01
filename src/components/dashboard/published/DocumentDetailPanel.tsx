@@ -7,10 +7,12 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 type DocumentDetailPanelProps = {
   selectedDoc: any;
   onClose: () => void;
-}
+};
 
 export function DocumentDetailPanel({ selectedDoc, onClose }: DocumentDetailPanelProps) {
-  if (!selectedDoc) {return null;}
+  if (!selectedDoc) {
+    return null;
+  }
 
   return (
     <div className="flex h-full w-80 shrink-0 flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg">

@@ -34,18 +34,18 @@ export function OverviewBanner({ trendingData }: OverviewBannerProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="relative flex min-h-[320px] flex-col justify-center overflow-hidden rounded-3xl bg-slate-900 p-8 text-white shadow-lg md:p-10 lg:col-span-2">
+      <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
+        <div className="relative flex min-h-[220px] flex-col justify-center overflow-hidden rounded-3xl bg-slate-900 p-5 text-white shadow-lg sm:min-h-[280px] md:min-h-[320px] md:p-10 xl:col-span-2">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center opacity-40"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent"></div>
 
-          <div className="relative z-10 flex w-full items-center justify-between">
+          <div className="relative z-10 flex w-full flex-col-reverse items-center justify-between gap-6 md:flex-row">
             {/* Glassmorphism wrapper for text and buttons */}
-            <div className="max-w-md rounded-2xl border border-white/20 bg-white/10 p-6 shadow-xl backdrop-blur-md md:p-8">
-              <h1 className="mb-4 text-2xl leading-tight font-extrabold text-white md:text-3xl">
+            <div className="relative z-20 w-full rounded-2xl border border-white/20 bg-white/10 p-5 shadow-xl backdrop-blur-md sm:max-w-md md:p-8">
+              <h1 className="mb-3 text-xl leading-tight font-extrabold text-white sm:mb-4 sm:text-2xl md:text-3xl">
                 GDU Portal <br /> <span className="text-cyan-400">Document Control</span>
               </h1>
-              <p className="mb-4 text-sm leading-relaxed font-medium text-slate-200">
+              <p className="mb-3 text-xs leading-relaxed font-medium text-slate-200 sm:mb-4 sm:text-sm">
                 Experience a centralized, transparent, and AI-driven ecosystem for university-wide
                 policy management.
               </p>
@@ -63,8 +63,8 @@ export function OverviewBanner({ trendingData }: OverviewBannerProps) {
             </div>
 
             {/* University Logo */}
-            <div className="pointer-events-none hidden items-center justify-center md:flex">
-              <div className="relative h-[280px] w-[280px] drop-shadow-[0_0_20px_rgba(255,255,255,0.25)] lg:h-[320px] lg:w-[320px]">
+            <div className="pointer-events-none flex items-center justify-center">
+              <div className="relative h-[120px] w-[120px] drop-shadow-[0_0_20px_rgba(255,255,255,0.25)] sm:h-[160px] sm:w-[160px] md:h-[240px] md:w-[240px] xl:h-[320px] xl:w-[320px]">
                 <Image
                   src="/logo-dai-hoc-gia-dinh-2025.svg"
                   alt="Gia Dinh University Logo"

@@ -7,7 +7,7 @@ type DocumentCardProps = {
   doc: any;
   isSelected: boolean;
   onSelect: (id: string) => void;
-}
+};
 
 export function DocumentCard({ doc, isSelected, onSelect }: DocumentCardProps) {
   const isApproved = doc.status === 'APPROVED';
@@ -17,7 +17,9 @@ export function DocumentCard({ doc, isSelected, onSelect }: DocumentCardProps) {
       className={`cursor-pointer overflow-hidden rounded-2xl transition-all hover:shadow-md ${
         isSelected ? 'border-blue-500 shadow-sm ring-1 ring-blue-500' : 'border-slate-200'
       }`}
-      onClick={() => onSelect(doc.id)}
+      onClick={() => {
+        onSelect(doc.id);
+      }}
     >
       <CardContent className="p-5">
         <div className="flex items-start gap-4">

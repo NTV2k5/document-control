@@ -20,19 +20,34 @@ type RecentlyInteractedProps = {
 
 export function RecentlyInteracted({ docs }: RecentlyInteractedProps) {
   const getDocTypeClass = (type: string): { bg: string; text: string; iconBg: string } => {
-    if (type === 'WORD') {return { bg: 'bg-blue-50', text: 'text-blue-500', iconBg: 'bg-white' };}
-    if (type === 'EXCEL')
-      {return { bg: 'bg-emerald-50', text: 'text-emerald-500', iconBg: 'bg-white' };}
-    if (type === 'PDF') {return { bg: 'bg-red-50', text: 'text-red-500', iconBg: 'bg-white' };}
-    if (type === 'IMAGE') {return { bg: 'bg-green-50', text: 'text-green-500', iconBg: 'bg-white' };}
+    if (type === 'WORD') {
+      return { bg: 'bg-blue-50', text: 'text-blue-500', iconBg: 'bg-white' };
+    }
+    if (type === 'EXCEL') {
+      return { bg: 'bg-emerald-50', text: 'text-emerald-500', iconBg: 'bg-white' };
+    }
+    if (type === 'PDF') {
+      return { bg: 'bg-red-50', text: 'text-red-500', iconBg: 'bg-white' };
+    }
+    if (type === 'IMAGE') {
+      return { bg: 'bg-green-50', text: 'text-green-500', iconBg: 'bg-white' };
+    }
     return { bg: 'bg-purple-50', text: 'text-purple-500', iconBg: 'bg-white' };
   };
 
   const getDocIcon = (type: string, className: string) => {
-    if (type === 'WORD') {return <FileText className={className} />;}
-    if (type === 'EXCEL') {return <Database className={className} />;}
-    if (type === 'PDF') {return <File className={className} />;}
-    if (type === 'IMAGE') {return <ImageIcon className={className} />;}
+    if (type === 'WORD') {
+      return <FileText className={className} />;
+    }
+    if (type === 'EXCEL') {
+      return <Database className={className} />;
+    }
+    if (type === 'PDF') {
+      return <File className={className} />;
+    }
+    if (type === 'IMAGE') {
+      return <ImageIcon className={className} />;
+    }
     return <Video className={className} />;
   };
 
@@ -50,7 +65,7 @@ export function RecentlyInteracted({ docs }: RecentlyInteractedProps) {
           return (
             <Card
               key={doc.id}
-              className="min-w-[280px] shrink-0 cursor-pointer overflow-hidden rounded-2xl border-none shadow-sm ring-1 ring-slate-100 transition-all hover:-translate-y-1 hover:shadow-md hover:ring-slate-200"
+              className="min-w-[240px] shrink-0 cursor-pointer overflow-hidden rounded-2xl border-none shadow-sm ring-1 ring-slate-100 transition-all hover:-translate-y-1 hover:shadow-md hover:ring-slate-200 sm:min-w-[280px]"
             >
               <div className={`relative h-28 p-5 ${styles.bg}`}>
                 <div className="flex items-start justify-between">

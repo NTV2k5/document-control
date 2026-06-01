@@ -41,7 +41,9 @@ export function MyHubFolders() {
                 <DropdownMenuTrigger asChild>
                   <button
                     className="rounded-md p-1 text-muted-foreground hover:bg-muted focus:outline-none"
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                    }}
                   >
                     <MoreVertical className="h-4 w-4" />
                   </button>

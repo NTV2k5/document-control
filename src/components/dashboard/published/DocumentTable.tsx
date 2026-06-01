@@ -14,7 +14,7 @@ type DocumentTableProps = {
   docs: any[];
   selectedDocId: string | null;
   onSelect: (id: string) => void;
-}
+};
 
 export function DocumentTable({ docs, selectedDocId, onSelect }: DocumentTableProps) {
   return (
@@ -50,7 +50,9 @@ export function DocumentTable({ docs, selectedDocId, onSelect }: DocumentTablePr
               className={`cursor-pointer transition-colors hover:bg-slate-50 ${
                 selectedDocId === doc.id ? 'bg-blue-50/50' : ''
               }`}
-              onClick={() => onSelect(doc.id)}
+              onClick={() => {
+                onSelect(doc.id);
+              }}
             >
               <TableCell>
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-100 bg-slate-50">

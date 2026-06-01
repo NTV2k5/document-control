@@ -17,14 +17,22 @@ type LatestPublishedProps = {
 
 export function LatestPublished({ docs }: LatestPublishedProps) {
   const getBadgeVariant = (type: string): 'default' | 'success' | 'warning' => {
-    if (type === 'REGULATION') return 'default';
-    if (type === 'POLICY') return 'success';
+    if (type === 'REGULATION') {
+      return 'default';
+    }
+    if (type === 'POLICY') {
+      return 'success';
+    }
     return 'warning';
   };
 
   const getIcon = (type: string) => {
-    if (type === 'REGULATION') return <Scale className="h-5 w-5 text-slate-500" />;
-    if (type === 'POLICY') return <ShieldCheck className="h-5 w-5 text-slate-500" />;
+    if (type === 'REGULATION') {
+      return <Scale className="h-5 w-5 text-slate-500" />;
+    }
+    if (type === 'POLICY') {
+      return <ShieldCheck className="h-5 w-5 text-slate-500" />;
+    }
     return <TerminalSquare className="h-5 w-5 text-slate-500" />;
   };
 
