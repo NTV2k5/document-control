@@ -7,7 +7,7 @@ import { SidebarProvider } from '@/components/SidebarContext';
 
 type DashboardLayoutProps = {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Promise<unknown>;
 };
 
 export function generateMetadata(): Metadata {
@@ -18,7 +18,18 @@ export function generateMetadata(): Metadata {
 }
 
 export default async function DashboardLayout(props: DashboardLayoutProps) {
-  const { locale } = await props.params;
+  const params = await props.params;
+  let locale = 'en';
+
+  if (
+    params &&
+    typeof params === 'object' &&
+    'locale' in params &&
+    typeof params.locale === 'string'
+  ) {
+    locale = params.locale;
+  }
+
   setRequestLocale(locale);
 
   return (
