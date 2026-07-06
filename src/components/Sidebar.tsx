@@ -145,7 +145,7 @@ function SidebarContent(props: { onNavigate?: () => void }) {
           </div>
 
           <button
-            onClick={async () => await signOut()}
+            onClick={async () =>{  await signOut(); }}
             className="flex w-full items-center justify-center gap-2 rounded-lg border border-destructive/20 py-2 text-sm font-medium text-destructive transition-colors hover:bg-destructive/10"
           >
             <LogOut className="h-4 w-4" />

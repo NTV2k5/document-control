@@ -27,7 +27,7 @@ export default async function DashboardLayout(props: DashboardLayoutProps) {
     'locale' in params &&
     typeof params.locale === 'string'
   ) {
-    locale = params.locale;
+    ({ locale } = params);
   }
 
   setRequestLocale(locale);
